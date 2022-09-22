@@ -75,8 +75,9 @@ header h4 {
   transition: 0.4s;
 }
 
-input:checked + .slider {
-  background-color: #2196f3;
+input:checked + .slider,
+.slider:hover {
+  background-image: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
 }
 
 input:focus + .slider {
@@ -109,6 +110,11 @@ input:checked + .slider:before {
   background-color: #f0f3fa;
   margin-bottom: 1.5rem;
   margin-left: 1rem;
+}
+
+.social:hover,
+.overview:hover {
+  background-color: hsla(0, 0%, 77%, 0.671);
 }
 
 .facebook,
@@ -250,4 +256,35 @@ img {
     grid-template-columns: repeat(4, 1fr);
     min-width: 100%;
   }
+}
+
+
+/* DARK MODE */
+body.dark-mode {
+  background-color: hsl(232, 19%, 15%);
+}
+
+body.dark-mode header h1,
+body.dark-mode .num-of-followers,
+body.dark-mode .section-title,
+body.dark-mode .num {
+  color: hsl(0, 0%, 100%);
+}
+
+body.dark-mode header h4,
+body.dark-mode .toggle,
+body.dark-mode .user,
+body.dark-mode .stats {
+  color: hsl(228, 34%, 66%);
+}
+
+body.dark-mode .social,
+body.dark-mode .overview,
+body.dark-mode .slider::before {
+  background-color: hsl(228, 28%, 20%);
+}
+
+body.dark-mode .social:hover, 
+body.dark-mode .overview:hover {
+  background-color: hsla(226, 70%, 68%, 0.425);
 }

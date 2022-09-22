@@ -16,7 +16,7 @@
       rel="stylesheet"
     />
     <title>Frontend Mentor | [Social media dashboard]</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" id="style" href="./style.css" />
   </head>
   <body>
     <div class="container">
@@ -28,7 +28,7 @@
         <div class="toggle">
           <span class="dark">Dark Mode</span>
           <label class="switch">
-            <input type="checkbox" />
+            <input onclick="toggleDarkMode()" type="checkbox" />
             <span class="slider round"></span>
           </label>
         </div>
@@ -71,7 +71,7 @@
           <span class="today-yt">&#9660;144 Today</span>
         </div>
       </div>
-      <h2 id="section-title">Overview - Today</h2>
+      <h2 class="section-title" id="section-title">Overview - Today</h2>
       <div class="sites-overview">
         <div class="overview">
           <div class="top">
@@ -155,5 +155,10 @@
         </div>
       </div>
     </div>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+      }
+    </script>
   </body>
 </html>
