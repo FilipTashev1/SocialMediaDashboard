@@ -7,8 +7,6 @@ This is a solution to the [Social media dashboard with theme switcher challenge 
   - [Screenshot](#screenshot)
   - [Built with](#built-with)
   - [Continued development](#continued-development)
-- [Author](#author)
-
 
 ### The challenge
 
@@ -34,8 +32,3 @@ Users should be able to:
 
 1. Remake the site in React
 2. Add backend so users can sign in and actually use the site
-
-## Author
-
-- Website - [Github Pages Site](https://filiptashev1.github.io/SocialMediaDashboard/)
-- Frontend Mentor - [@FilipTashev1](https://www.frontendmentor.io/profile/FilipTashev1)
