@@ -20,11 +20,13 @@
   </head>
   <body>
     <div class="container">
+      <!-- Header -->
       <div class="header-container">
         <header>
           <h1 class="header">Social Media Dashboard</h1>
           <h4>Total Followers: 23,004</h4>
         </header>
+        <!-- Dark Mode Text and Switch -->
         <div class="toggle">
           <span class="dark">Dark Mode</span>
           <label class="switch">
@@ -34,6 +36,7 @@
         </div>
       </div>
       <div class="sites">
+        <!-- Account cards -->
         <div class="social facebook">
           <div class="account">
             <img src="./images/icon-facebook.svg" alt="facebook icon" />
@@ -71,8 +74,10 @@
           <span class="today-yt">&#9660;144 Today</span>
         </div>
       </div>
+      <!-- Overview Title -->
       <h2 class="section-title" id="section-title">Overview - Today</h2>
       <div class="sites-overview">
+        <!-- Account Overview Cards -->
         <div class="overview">
           <div class="top">
             <span class="stats">Page Views</span>
@@ -155,6 +160,7 @@
         </div>
       </div>
     </div>
+    <!-- Dark Mode Toggle Function -->
     <script>
       function toggleDarkMode() {
         document.body.classList.toggle("dark-mode");

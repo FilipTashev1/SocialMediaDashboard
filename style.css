@@ -1,9 +1,11 @@
+/* Body Styling */
 body {
   background-color: #f8f9fe;
   font-family: "Inter", sans-serifs;
   margin: 0;
 }
 
+/* Header */
 header {
   border-bottom: 1px solid hsl(230, 22%, 74%);
   line-height: 0.5rem;
@@ -19,6 +21,7 @@ header h4 {
   color: hsl(228, 12%, 44%);
 }
 
+/* Dark Mode Toggle Container */
 .toggle {
   display: flex;
   justify-content: space-between;
@@ -30,6 +33,7 @@ header h4 {
   width: 90%;
 }
 
+/* Dark Mode Text */
 .dark {
   margin-top: -0.1rem;
   font-weight: 700;
@@ -99,6 +103,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+/* Social Media Cards */
 .social {
   height: fit-content;
   padding-bottom: 1.5rem;
@@ -179,6 +184,7 @@ img {
   color: hsl(228, 12%, 44%);
 }
 
+/* Overview */
 .overview {
   background-color: #f0f3fa;
   margin-bottom: 1rem;
@@ -228,6 +234,7 @@ img {
   justify-content: space-between;
 }
 
+/* Media Queries */
 @media only screen and (min-width: 900px) {
   .body {
     display: flex;
@@ -257,7 +264,6 @@ img {
     min-width: 100%;
   }
 }
-
 
 /* DARK MODE */
 body.dark-mode {
