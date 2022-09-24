@@ -17,7 +17,7 @@ header h1 {
   font-size: 1.45rem;
 }
 
-header h4 {
+header p {
   color: hsl(228, 12%, 44%);
 }
 
@@ -81,7 +81,11 @@ header h4 {
 
 input:checked + .slider,
 .slider:hover {
-  background-image: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+  background-image: linear-gradient(
+    to right,
+    hsl(210, 78%, 56%),
+    hsl(146, 68%, 55%)
+  );
 }
 
 input:focus + .slider {
@@ -290,7 +294,7 @@ body.dark-mode .slider::before {
   background-color: hsl(228, 28%, 20%);
 }
 
-body.dark-mode .social:hover, 
+body.dark-mode .social:hover,
 body.dark-mode .overview:hover {
   background-color: hsla(226, 70%, 68%, 0.425);
 }
