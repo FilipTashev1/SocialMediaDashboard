@@ -19,144 +19,219 @@
     <link rel="stylesheet" id="style" href="./style.css" />
   </head>
   <body>
-    <div class="container">
-      <!-- Header -->
-      <div class="header-container">
-        <header>
-          <h1 class="header">Social Media Dashboard</h1>
-          <p>Total Followers: 23,004</p>
-        </header>
-        <!-- Dark Mode Text and Switch -->
-        <div class="toggle">
-          <span class="dark">Dark Mode</span>
-          <label class="switch">
-            <input onclick="toggleDarkMode()" type="checkbox" />
-            <span class="slider round"></span>
-          </label>
+    <!-- Facebook SDK -->
+    <script>
+      // This is called with the results from from FB.getLoginStatus().
+      function statusChangeCallback(response) {
+        console.log("statusChangeCallback");
+        console.log(response);
+        // The response object is returned with a status field that lets the
+        // app know the current login status of the person.
+        // Full docs on the response object can be found in the documentation
+        // for FB.getLoginStatus().
+        if (response.status === "connected") {
+          // Logged into your app and Facebook.
+          testAPI();
+        } else {
+          // The person is not logged into your app or we are unable to tell.
+          document.getElementById("status").innerHTML =
+            "Please log " + "into this app.";
+        }
+      }
+
+      // This function is called when someone finishes with the Login
+      // Button.  See the onlogin handler attached to it in the sample
+      // code below.
+      function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+          statusChangeCallback(response);
+        });
+      }
+
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "516220079837613",
+          cookie: true, // enable cookies to allow the server to access
+          // the session
+          xfbml: true, // parse social plugins on this page
+          version: "v15.0", // Specify the Graph API version to use
+        });
+
+        // Now that we've initialized the JavaScript SDK, we call
+        // FB.getLoginStatus().  This function gets the state of the
+        // person visiting this page and can return one of three states to
+        // the callback you provide.  They can be:
+        //
+        // 1. Logged into your app ('connected')
+        // 2. Logged into Facebook, but not your app ('not_authorized')
+        // 3. Not logged into Facebook and can't tell if they are logged into
+        //    your app or not.
+        //
+        // These three cases are handled in the callback function.
+
+        FB.getLoginStatus(function (response) {
+          statusChangeCallback(response);
+        });
+      };
+
+      // Load the SDK asynchronously
+      (function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, "script", "facebook-jssdk");
+
+      // Here we run a very simple test of the Graph API after login is
+      // successful.  See statusChangeCallback() for when this call is made.
+      function testAPI() {
+        console.log("Welcome!  Fetching your information.... ");
+        FB.api("/me", function (response) {
+          console.log("Successful login for: " + response.name);
+          document.getElementById("status").innerHTML =
+            "Thanks for logging in, " + response.name + "!";
+        });
+      }
+    </script>
+    <!-- Header -->
+    <div class="header-container">
+      <header>
+        <h1 class="header">Social Media Dashboard</h1>
+        <p>Total Followers: 23,004</p>
+      </header>
+      <!-- Dark Mode Text and Switch -->
+      <div class="toggle">
+        <span class="dark">Dark Mode</span>
+        <label class="switch">
+          <input onclick="toggleDarkMode()" type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+    <!-- Account cards -->
+    <main class="sites">
+      <div class="social facebook">
+        <div class="account">
+          <img src="./images/icon-facebook.svg" alt="facebook icon" />
+          <h2 class="user">@nathanf</h2>
+        </div>
+        <span class="num-of-followers">1987</span>
+        <span class="followers">FOLLOWERS</span>
+        <span class="today">&#9650;12 Today</span>
+      </div>
+      <div class="social twitter">
+        <div class="account">
+          <img src="./images/icon-twitter.svg" alt="twitter icon" />
+          <h2 class="user">@nathanf</h2>
+        </div>
+        <span class="num-of-followers">1044</span>
+        <span class="followers">FOLLOWERS</span>
+        <span class="today">&#9650;99 Today</span>
+      </div>
+      <div class="social instagram">
+        <div class="account">
+          <img src="./images/icon-instagram.svg" alt="" />
+          <h2 class="user">@realnathanf</h2>
+        </div>
+        <span class="num-of-followers">11k </span>
+        <span class="followers">FOLLOWERS</span>
+        <span class="today">&#9650;1099 Today</span>
+      </div>
+      <div class="social youtube">
+        <div class="account">
+          <img src="./images/icon-youtube.svg" alt="" />
+          <h2 class="user">Nathan F.</h2>
+        </div>
+        <span class="num-of-followers">8239 </span>
+        <span class="followers">SUBSCRIBERS</span>
+        <span class="today-yt">&#9660;144 Today</span>
+      </div>
+    </main>
+    <!-- Overview Title -->
+    <h2 class="section-title" id="section-title">Overview - Today</h2>
+    <div class="sites-overview">
+      <!-- Account Overview Cards -->
+      <div class="overview">
+        <div class="top">
+          <span class="stats">Page Views</span>
+          <img src="./images/icon-facebook.svg" alt="facebook icon" />
+        </div>
+        <div class="bottom">
+          <span class="num">87</span>
+          <span class="percent positive">&#9650;3%</span>
         </div>
       </div>
-      <!-- Account cards -->
-      <main class="sites">
-        <div class="social facebook">
-          <div class="account">
-            <img src="./images/icon-facebook.svg" alt="facebook icon" />
-            <h2 class="user">@nathanf</h2>
-          </div>
-          <span class="num-of-followers">1987</span>
-          <span class="followers">FOLLOWERS</span>
-          <span class="today">&#9650;12 Today</span>
+      <div class="overview">
+        <div class="top">
+          <span class="stats">Likes</span>
+          <img src="./images/icon-facebook.svg" alt="facebook icon" />
         </div>
-        <div class="social twitter">
-          <div class="account">
-            <img src="./images/icon-twitter.svg" alt="twitter icon" />
-            <h2 class="user">@nathanf</h2>
-          </div>
-          <span class="num-of-followers">1044</span>
-          <span class="followers">FOLLOWERS</span>
-          <span class="today">&#9650;99 Today</span>
+        <div class="bottom">
+          <span class="num">52</span>
+          <span class="percent negative">&#9660;2%</span>
         </div>
-        <div class="social instagram">
-          <div class="account">
-            <img src="./images/icon-instagram.svg" alt="" />
-            <h2 class="user">@realnathanf</h2>
-          </div>
-          <span class="num-of-followers">11k </span>
-          <span class="followers">FOLLOWERS</span>
-          <span class="today">&#9650;1099 Today</span>
+      </div>
+      <div class="overview">
+        <div class="top">
+          <span class="stats">Likes</span>
+          <img src="./images/icon-instagram.svg" alt="instagram icon" />
         </div>
-        <div class="social youtube">
-          <div class="account">
-            <img src="./images/icon-youtube.svg" alt="" />
-            <h2 class="user">Nathan F.</h2>
-          </div>
-          <span class="num-of-followers">8239 </span>
-          <span class="followers">SUBSCRIBERS</span>
-          <span class="today-yt">&#9660;144 Today</span>
+        <div class="bottom">
+          <span class="num">5462</span>
+          <span class="percent positive">&#9650;2257%</span>
         </div>
-      </main>
-      <!-- Overview Title -->
-      <h2 class="section-title" id="section-title">Overview - Today</h2>
-      <div class="sites-overview">
-        <!-- Account Overview Cards -->
-        <div class="overview">
-          <div class="top">
-            <span class="stats">Page Views</span>
-            <img src="./images/icon-facebook.svg" alt="facebook icon" />
-          </div>
-          <div class="bottom">
-            <span class="num">87</span>
-            <span class="percent positive">&#9650;3%</span>
-          </div>
+      </div>
+      <div class="overview">
+        <div class="top">
+          <span class="stats">Profile Views</span>
+          <img src="./images/icon-instagram.svg" alt="instagram icon" />
         </div>
-        <div class="overview">
-          <div class="top">
-            <span class="stats">Likes</span>
-            <img src="./images/icon-facebook.svg" alt="facebook icon" />
-          </div>
-          <div class="bottom">
-            <span class="num">52</span>
-            <span class="percent negative">&#9660;2%</span>
-          </div>
+        <div class="bottom">
+          <span class="num">52k</span>
+          <span class="percent positive">&#9650;1375%</span>
         </div>
-        <div class="overview">
-          <div class="top">
-            <span class="stats">Likes</span>
-            <img src="./images/icon-instagram.svg" alt="instagram icon" />
-          </div>
-          <div class="bottom">
-            <span class="num">5462</span>
-            <span class="percent positive">&#9650;2257%</span>
-          </div>
+      </div>
+      <div class="overview">
+        <div class="top">
+          <span class="stats">Retweets</span>
+          <img src="./images/icon-twitter.svg" alt="twitter icon" />
         </div>
-        <div class="overview">
-          <div class="top">
-            <span class="stats">Profile Views</span>
-            <img src="./images/icon-instagram.svg" alt="instagram icon" />
-          </div>
-          <div class="bottom">
-            <span class="num">52k</span>
-            <span class="percent positive">&#9650;1375%</span>
-          </div>
+        <div class="bottom">
+          <span class="num">117 </span>
+          <span class="percent positive">&#9650;303%</span>
         </div>
-        <div class="overview">
-          <div class="top">
-            <span class="stats">Retweets</span>
-            <img src="./images/icon-twitter.svg" alt="twitter icon" />
-          </div>
-          <div class="bottom">
-            <span class="num">117 </span>
-            <span class="percent positive">&#9650;303%</span>
-          </div>
+      </div>
+      <div class="overview">
+        <div class="top">
+          <span class="stats">Likes</span>
+          <img src="./images/icon-twitter.svg" alt="twitter icon" />
         </div>
-        <div class="overview">
-          <div class="top">
-            <span class="stats">Likes</span>
-            <img src="./images/icon-twitter.svg" alt="twitter icon" />
-          </div>
-          <div class="bottom">
-            <span class="num">507</span>
-            <span class="percent positive">&#9650;553%</span>
-          </div>
+        <div class="bottom">
+          <span class="num">507</span>
+          <span class="percent positive">&#9650;553%</span>
         </div>
-        <div class="overview">
-          <div class="top">
-            <span class="stats">Likes</span>
-            <img src="./images/icon-youtube.svg" alt="youtube icon" />
-          </div>
-          <div class="bottom">
-            <span class="num">107</span>
-            <span class="percent negative">&#9660;19%</span>
-          </div>
+      </div>
+      <div class="overview">
+        <div class="top">
+          <span class="stats">Likes</span>
+          <img src="./images/icon-youtube.svg" alt="youtube icon" />
         </div>
-        <div class="overview">
-          <div class="top">
-            <span class="stats">Total Views</span>
-            <img src="./images/icon-youtube.svg" alt="youtube icon" />
-          </div>
-          <div class="bottom">
-            <span class="num">1407</span>
-            <span class="percent negative">&#9660;12%</span>
-          </div>
+        <div class="bottom">
+          <span class="num">107</span>
+          <span class="percent negative">&#9660;19%</span>
+        </div>
+      </div>
+      <div class="overview">
+        <div class="top">
+          <span class="stats">Total Views</span>
+          <img src="./images/icon-youtube.svg" alt="youtube icon" />
+        </div>
+        <div class="bottom">
+          <span class="num">1407</span>
+          <span class="percent negative">&#9660;12%</span>
         </div>
       </div>
     </div>
@@ -166,5 +241,7 @@
         document.body.classList.toggle("dark-mode");
       }
     </script>
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+    </fb:login-button>
   </body>
 </html>
