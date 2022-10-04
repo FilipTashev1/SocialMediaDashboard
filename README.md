@@ -31,4 +31,3 @@ Users should be able to:
 ### Continued development
 
 1. Remake the site in React
-2. Add backend so users can sign in and actually use the site
