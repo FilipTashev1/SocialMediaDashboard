@@ -26,8 +26,4 @@ Users should be able to:
 - CSS
 - JavaScript
 - Flexbox
-- Mobile-first workflow 
-
-### Continued development
-
-1. Remake the site in React
+- Mobile-first workflow
